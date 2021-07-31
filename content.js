@@ -5,7 +5,7 @@ for (image of images) {
     image.srcset = "https://avatars.githubusercontent.com/u/24768574?v=4";
 }
 
-const names = ["Michael",
+const names = new Set(["Michael",
 "Christopher",
 "Jessica",
 "Matthew",
@@ -1007,13 +1007,18 @@ const names = ["Michael",
 "Rocio",
 "Kim",
 "Arlene",
-"Antonia"]
+"Antonia"]);
 
 function walkText(node) {
     if (node.nodeType == 3) {
-        for (cn of names) {
-            node.data = node.data.replace(new RegExp(cn, 'g'), "Alan")
+      var words = node.data.split(" ");
+      for (var i = 0; i < words.length; i++) {
+        if (names.has(words[i])) {
+          words[i] = "Alan";
         }
+      }
+
+      node.data = words.join(" ");
     } else if (node.nodeType == 1 && node.nodeName != "SCRIPT") {
       for (childNode of node.childNodes) {
         walkText(childNode);
