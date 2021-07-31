@@ -1,0 +1,28 @@
+{
+    "name": "Alan Everywhere",
+    "description": "This extension inserts Alan... Everywhere.",
+    "version": "1.0",
+    "manifest_version": 3,
+
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "/images/Alan16.png",
+            "32": "/images/Alan32.png",
+            "48": "/images/Alan48.png",
+            "128": "/images/Alan128.png"
+          }
+        },
+    "icons": {
+        "16": "/images/Alan16.png",
+        "32": "/images/Alan32.png",
+        "48": "/images/Alan48.png",
+        "128": "/images/Alan128.png"
+    },
+
+    "permissions": [ "activeTab" ],
+    "content_scripts": [ {
+      "matches": [ "https://*/", "https://*/*" ],
+      "js": [ "content.js" ]
+    } ]
+}
